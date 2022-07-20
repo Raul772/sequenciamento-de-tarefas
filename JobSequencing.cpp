@@ -31,6 +31,7 @@ struct jobArray
     void printArray(int size);
     void sortArray(int size);
     jobArray maxProfitArray(int size);
+    int findMaxDeadline(int size);
 };
 
 // -------------------------- Preenchimento da array de tarefas 1
@@ -62,27 +63,30 @@ void jobArray::printArray(int size){
 
 void jobArray::sortArray(int size){
 
-    job* aux;
+	for (int i = 0; i < size; i++) //loop externo que percorre todo o vetor elemento a elemento
+	{
+		job* aux; //variavel auxiliar
+		for (int j = i; j > 0; j--) //loop interno que percorre todos os elementos anteriores ao elemento da interação do loop externo
+		{	
+			
+			if (array[j]->profit < array[j - 1]->profit) { //compara o valor atual com cada valor anterior a ele e caso true substitui os valores
+				aux = array[j - 1];
+				array[j - 1] = array[j];
+				array[j] = aux;
+			}
+			else {
+				break; //no caso falso não é necessário continuar nesta estrutura de repetição
+			}
+		}
+		
+	}
+	
 
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size; j++)
-        {
-           if (array[i]->profit > array[j]->profit)
-           {
-                aux = array[j];
-                array[j] = array[i];
-                array[i] = aux;
-           }
-        }
-    }
 }
 
 jobArray jobArray::maxProfitArray(int size){
 
     job* aux[size];
-
-    for (int i = 0; i < size; i++) aux[i] = NULL;
 
     for (int i = 0; i < size; i++)
     {
@@ -94,6 +98,16 @@ jobArray jobArray::maxProfitArray(int size){
 
 }
 
+int jobArray::findMaxDeadline(int size){
+    int maxDeadline = 0;
+    for(int i =0; i<size; i++){
+        if(array[i]->deadline > maxDeadline){
+            maxDeadline = array[i]->deadline;
+        }
+    }
+    return maxDeadline;
+}
+
 int main(){
 
     jobArray jobArray;
@@ -102,5 +116,6 @@ int main(){
     jobArray.printArray(arraySize);
     jobArray.sortArray(arraySize);
     jobArray.printArray(arraySize);
-
+    jobArray.findMaxDeadline(arraySize);
+    
 }
