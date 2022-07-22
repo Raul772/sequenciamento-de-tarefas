@@ -123,9 +123,9 @@ jobArray jobArray::finalArray(){
         }
     }
     for (int i = 0; i < arraySize; i++)
-    {
+    {   
         if (array[i] != NULL)
-        {
+        { 
             for (int j = (array[i]->profit - 1); j > 0; j--)
             {
                 if (auxJobArray[j] != NULL){
