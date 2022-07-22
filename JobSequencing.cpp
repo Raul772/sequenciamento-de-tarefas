@@ -48,7 +48,7 @@ void jobArray::preencherArray(){
 // -------------------------- Imprime a array de tarefas 1
 void jobArray::printArray(){
 
-    system(clearT);
+    //system(clearT);
     cout << "\n\n";
     for (int i = 0; i < arraySize; i++)
     {
