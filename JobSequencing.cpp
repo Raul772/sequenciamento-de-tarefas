@@ -6,7 +6,7 @@ using namespace std;
 #ifdef __unix__              
 	#define clearT  "clear" 
 #elif _WIN32 
-	#define clearT  "" 
+	#define clearT  "cls" 
 #endif
 // --------------------------------------------------------------------------
 
