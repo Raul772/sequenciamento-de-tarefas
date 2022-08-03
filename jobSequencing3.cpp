@@ -39,12 +39,12 @@ struct jobArray{
         {
             for (int j = 0; j < arraySize; j++)
             {
-            if (array[i].profit > array[j].profit)
-            {
+                if (array[i].profit > array[j].profit)
+                {
                     aux = array[j];
                     array[j] = array[i];
                     array[i] = aux;
-            }
+                }
             }
         }
     };
